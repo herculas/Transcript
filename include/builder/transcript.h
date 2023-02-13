@@ -5,9 +5,9 @@
 #include <vector>
 
 #include "strobe/strobe_128.h"
-#include "transcript/rng_builder.h"
+#include "builder/rng_builder.h"
 
-namespace transcript::transcript {
+namespace transcript::builder {
 
 class Transcript {
 private:
@@ -29,6 +29,6 @@ public:
     [[nodiscard]] RngBuilder build_rng() const;
 };
 
-} // namespace transcript::transcript
+} // namespace transcript::builder
 
 #endif //TRANSCRIPT_TRANSCRIPT_H

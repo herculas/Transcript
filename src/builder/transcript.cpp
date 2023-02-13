@@ -1,11 +1,11 @@
-#include "transcript/transcript.h"
+#include "builder/transcript.h"
 
 #include <array>
 
-#include "transcript/constant.h"
+#include "builder/constant.h"
 #include "util/bit.h"
 
-namespace transcript::transcript {
+namespace transcript::builder {
 
 Transcript::Transcript(const std::string_view &label) : strobe{constant::PROTOCOL_LABEL} {
     this->append_message("dom-sep", label);
@@ -49,4 +49,4 @@ RngBuilder Transcript::build_rng() const {
     return RngBuilder(this->strobe);
 }
 
-} // namespace transcript::transcript
+} // namespace transcript::builder

@@ -6,7 +6,7 @@
 
 #include "strobe/strobe_128.h"
 
-namespace transcript::transcript {
+namespace transcript::builder {
 
 class Rng {
 private:
@@ -22,6 +22,6 @@ public:
     void fill_bytes(std::vector<uint8_t> &destination);
 };
 
-} // namespace transcript::transcript
+} // namespace transcript::builder
 
 #endif //TRANSCRIPT_RNG_H

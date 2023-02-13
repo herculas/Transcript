@@ -1,11 +1,11 @@
-#include "transcript/rng_builder.h"
+#include "builder/rng_builder.h"
 
 #include <vector>
 
 #include "util/bit.h"
 #include "util/random.h"
 
-namespace transcript::transcript {
+namespace transcript::builder {
 
 RngBuilder::RngBuilder(const strobe::Strobe128 &strobe) : strobe{strobe} {}
 
@@ -34,4 +34,4 @@ Rng RngBuilder::finalize() {
     return Rng{this->strobe};
 }
 
-} // namespace transcript::transcript
+} // namespace transcript::builder

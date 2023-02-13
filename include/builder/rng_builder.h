@@ -2,9 +2,9 @@
 #define TRANSCRIPT_RNG_BUILDER_H
 
 #include "strobe/strobe_128.h"
-#include "transcript/rng.h"
+#include "builder/rng.h"
 
-namespace transcript::transcript {
+namespace transcript::builder {
 
 class RngBuilder {
 private:
@@ -18,6 +18,6 @@ public:
     Rng finalize();
 };
 
-} // namespace transcript::transcript
+} // namespace transcript::builder
 
 #endif //TRANSCRIPT_RNG_BUILDER_H

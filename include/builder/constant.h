@@ -3,10 +3,10 @@
 
 #include <string>
 
-namespace transcript::transcript::constant {
+namespace transcript::builder::constant {
 
 const std::string PROTOCOL_LABEL = "TADOKORO v11.45.14";
 
-} // namespace transcript::transcript::constant
+} // namespace transcript::builder::constant
 
 #endif //TRANSCRIPT_CONSTANT_H

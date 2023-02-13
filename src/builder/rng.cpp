@@ -1,9 +1,9 @@
-#include "transcript/rng.h"
+#include "builder/rng.h"
 
 #include "util/bit.h"
 #include "util/random.h"
 
-namespace transcript::transcript {
+namespace transcript::builder {
 
 Rng::Rng(const strobe::Strobe128 &strobe) : strobe{strobe} {}
 
@@ -25,4 +25,4 @@ void Rng::fill_bytes(std::vector<uint8_t> &destination) {
     this->strobe.prf(destination, false);
 }
 
-} // namespace transcript::transcript
+} // namespace transcript::builder
