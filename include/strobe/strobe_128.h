@@ -7,7 +7,7 @@
 
 namespace transcript::strobe {
 
-typedef std::array<uint8_t, 200> AlignedKeccakState;
+using AlignedKeccakState = std::array<uint8_t, 200>;
 
 class Strobe128 {
 private:

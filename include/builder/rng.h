@@ -4,22 +4,23 @@
 #include <cstdint>
 #include <vector>
 
+#include "core/rng.h"
+
 #include "strobe/strobe_128.h"
 
 namespace transcript::builder {
 
-class Rng {
+class TranscriptRng : public rng::core::RngCore {
 private:
     strobe::Strobe128 strobe;
 
 public:
-    explicit Rng(const strobe::Strobe128 &strobe);
-    explicit Rng(strobe::Strobe128 &&strobe) noexcept;
+    explicit TranscriptRng(const strobe::Strobe128 &strobe);
+    explicit TranscriptRng(strobe::Strobe128 &&strobe) noexcept;
 
-    static uint32_t get_uint32();
-    static uint64_t get_uint64();
-
-    void fill_bytes(std::vector<uint8_t> &destination);
+    uint32_t get_uint32() override;
+    uint64_t get_uint64() override;
+    void fill_bytes(const std::span<uint8_t> &dest) override;
 };
 
 } // namespace transcript::builder

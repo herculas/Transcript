@@ -2,7 +2,10 @@
 
 #include <array>
 
-#include "util/bit.h"
+#include "utils/state.h"
+
+using transcript::util::state::aggregate_state;
+using transcript::util::state::partition_state;
 
 TEST(Util, memcp) {
     const std::array<uint8_t, 200> state{
@@ -21,8 +24,8 @@ TEST(Util, memcp) {
             0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7,
     };
 
-    const auto aggregated_state = keccak::util::bit_operation::aggregate_state(state);
-    const auto res_state = keccak::util::bit_operation::partition_state(aggregated_state);
+    const auto aggregated_state = aggregate_state(state);
+    const auto res_state = partition_state(aggregated_state);
 
     EXPECT_EQ(state, res_state);
 }

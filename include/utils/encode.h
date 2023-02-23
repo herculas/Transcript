@@ -4,7 +4,7 @@
 #include <string_view>
 #include <vector>
 
-namespace keccak::util::encoding {
+namespace transcript::util::encoding {
 
 std::vector<uint8_t> str_to_bytes(const std::string_view &str) {
     std::vector<uint8_t> res;
