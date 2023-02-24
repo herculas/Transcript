@@ -36,7 +36,7 @@ Strobe128::Strobe128(const std::string_view &protocol_label)
 }
 
 void Strobe128::meta_ad(const std::vector<uint8_t> &data, bool more) {
-    this->begin_op(constant::FLAG_M | constant::FLAG_A, more);
+    this->begin_op(constant::FLAG::M | constant::FLAG::A, more);
     this->absorb(data);
 }
 
@@ -46,7 +46,7 @@ void Strobe128::meta_ad(const std::string_view &data, bool more) {
 }
 
 void Strobe128::ad(const std::vector<uint8_t> &data, bool more) {
-    this->begin_op(constant::FLAG_A, more);
+    this->begin_op(constant::FLAG::A, more);
     this->absorb(data);
 }
 
@@ -56,12 +56,12 @@ void Strobe128::ad(const std::string_view &data, bool more) {
 }
 
 void Strobe128::prf(std::vector<uint8_t> &data, bool more) {
-    this->begin_op(constant::FLAG_I | constant::FLAG_A | constant::FLAG_C, more);
+    this->begin_op(constant::FLAG::I | constant::FLAG::A | constant::FLAG::C, more);
     this->squeeze(data);
 }
 
 void Strobe128::key(const std::vector<uint8_t> &data, bool more) {
-    this->begin_op(constant::FLAG_A | constant::FLAG_C, more);
+    this->begin_op(constant::FLAG::A | constant::FLAG::C, more);
     this->overwrite(data);
 }
 
@@ -129,7 +129,7 @@ void Strobe128::begin_op(uint8_t flags, bool more) {
     }
 
     // skips adjusting direction information (we just use AD, PRF)
-    assert((flags & constant::FLAG_T) == 0);
+    assert((flags & constant::FLAG::T) == 0);
 
     const uint8_t old_begin = this->position_begin;
     this->position_begin = this->position + 1;
@@ -137,7 +137,7 @@ void Strobe128::begin_op(uint8_t flags, bool more) {
 
     this->absorb({old_begin, flags});
 
-    const bool force_f = 0 != (flags & (constant::FLAG_C | constant::FLAG_K));
+    const bool force_f = 0 != (flags & (constant::FLAG::C | constant::FLAG::K));
     if (force_f && this->position != 0)
         this->run_f();
 }
