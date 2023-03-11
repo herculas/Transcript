@@ -23,5 +23,5 @@ TARGET_INCLUDE_DIRECTORIES(
 TARGET_LINK_LIBRARIES(
         Transcript
         PRIVATE Keccak
-        PUBLIC Rand
+        PRIVATE Rand
 )

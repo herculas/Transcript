@@ -2,8 +2,8 @@
 #define TRANSCRIPT_STROBE_128_H
 
 #include <array>
-#include <vector>
 #include <string_view>
+#include <vector>
 
 namespace transcript::strobe {
 

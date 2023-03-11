@@ -3,8 +3,8 @@
 
 #include "core/rng.h"
 
-#include "strobe/strobe_128.h"
 #include "builder/rng.h"
+#include "strobe/strobe_128.h"
 
 namespace transcript::builder {
 

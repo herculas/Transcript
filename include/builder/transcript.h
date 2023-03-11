@@ -4,8 +4,8 @@
 #include <string_view>
 #include <vector>
 
-#include "strobe/strobe_128.h"
 #include "builder/rng_builder.h"
+#include "strobe/strobe_128.h"
 
 namespace transcript::builder {
 
