@@ -2,6 +2,7 @@
 #define TRANSCRIPT_RNG_H
 
 #include <cstdint>
+#include <span>
 #include <vector>
 
 #include "core/rng.h"
