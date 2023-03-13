@@ -21,15 +21,34 @@ TEST(Transcript, Equivalance) {
     EXPECT_EQ(challenge, challenge_expected);
 }
 
+TEST(Transcript, CopyConstructor) {
+    Transcript trans{"test protocol"};
+    trans.append_message("some label", "some data");
+
+    Transcript new_trans{trans};
+    std::vector<uint8_t> challenge(32, 0);
+    new_trans.challenge_bytes("challenge", challenge);
+
+    std::vector<uint8_t> challenge_expected{
+            0x56, 0x9f, 0x2c, 0x4b, 0xb6, 0xb3, 0xeb, 0x7a,
+            0x74, 0x8c, 0xb8, 0xed, 0xca, 0x0a, 0x84, 0x9a,
+            0xb7, 0x65, 0xa2, 0x50, 0xce, 0x82, 0x59, 0x05,
+            0x88, 0x27, 0x4f, 0x23, 0x42, 0xc3, 0x43, 0x88,
+    };
+    EXPECT_EQ(challenge, challenge_expected);
+}
+
 TEST(Transcript, EquivalanceComplex) {
     Transcript trans{"test protocol"};
-    const std::vector<uint8_t> data(1024, 99);
     trans.append_message("step1", "some data");
+
+    Transcript new_trans{trans};
     std::vector<uint8_t> challenge(32, 0);
+    const std::vector<uint8_t> data(1024, 99);
     for (int i = 0; i < 32; ++i) {
-        trans.challenge_bytes("challenge", challenge);
-        trans.append_message("bigdata", data);
-        trans.append_message("challengedata", challenge);
+        new_trans.challenge_bytes("challenge", challenge);
+        new_trans.append_message("bigdata", data);
+        new_trans.append_message("challengedata", challenge);
     }
 
     std::vector<uint8_t> challenge_expected{

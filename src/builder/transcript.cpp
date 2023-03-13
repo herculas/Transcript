@@ -8,6 +8,10 @@ namespace transcript::builder {
 
 using rng::util::bit::to_le_bytes;
 
+Transcript::Transcript(const Transcript &strobe) = default;
+
+Transcript::Transcript(Transcript &&strobe) noexcept = default;
+
 Transcript::Transcript(const std::string_view &label) : strobe{constant::PROTOCOL_LABEL} {
     this->append_message("dom-sep", label);
 }

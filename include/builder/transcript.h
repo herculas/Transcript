@@ -15,8 +15,8 @@ private:
 
 public:
     Transcript() = delete;
-    Transcript(const Transcript &strobe) = delete;
-    Transcript(Transcript &&strobe) noexcept = delete;
+    Transcript(const Transcript &strobe);
+    Transcript(Transcript &&strobe) noexcept;
 
     explicit Transcript(const std::string_view &label);
 
